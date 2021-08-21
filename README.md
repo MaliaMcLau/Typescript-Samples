@@ -17,10 +17,12 @@ a child, which could be created, deleted, edited, or moved to another category. 
 --------------------
 *Template Injection*
 --------------------
+  ```
   @Input() allRedactedsTemplate: TemplateRef<any>;
   @Input() redactedsTemplate: TemplateRef<any>;
   @Input() categoryRedactedsTemplate: TemplateRef<any>;
   @Input() searchBarData: Subject<RedactedNode[]>;
+  ```
 
 Various templates could be injected into the accordion by passing the TemplateRef type variables into the accordion component instance. This allowed for further customizations 
 for what types of data were displayed. The redacted-accordion view contains three ng-container tag blocks that rely on the TemplateRef inputs. 
