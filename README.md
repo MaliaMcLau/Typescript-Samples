@@ -1,7 +1,8 @@
 # Typescript-Samples
 Here are some samples written in Typescript from my last position. Not my best work but it is what they could spare.
-
-***Notes on Redacted-Accordion Component Sample***
+------------------------------------------------
+#*Notes on Redacted-Accordion Component Sample*#
+------------------------------------------------
 This project is built off of Angular Material Accordion. The main purpose of the project was to have a structure of categories and their children. Each category could have 
 a child, which could be created, deleted, edited, or moved to another category. Also child node could have subchildren with the same behaviors.
 
