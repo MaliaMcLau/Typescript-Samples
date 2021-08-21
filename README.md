@@ -29,7 +29,7 @@ Various templates could be injected into the accordion by passing the TemplateRe
 for what types of data were displayed. The redacted-accordion view contains three ng-container tag blocks that rely on the TemplateRef inputs. 
 
 ------------------------------------------------------
-*Updating the Accordion after changes to Child Nodes.*
+*Updating the Accordion After Changes to Child Nodes.*
 ------------------------------------------------------
 Whenever a change occurs on the Accordion, such as a child being edited or a child being moved to another parent, the accordion view needs to be updated. This is done in the 
 AccordionService with the reloadChildren() function and with the native reloadNode function. Instead of reloading the entire view, it only reloads the node that was altered. 
@@ -37,5 +37,22 @@ Depending on the case, this may be the parent or parents of the child that was a
 dealing with several categories/parents in a single view. There was no need to reload all the data for a single change.
 
 
+------------------------------------------------------
+*Transferring Child Node to Another Parent.*
+------------------------------------------------------
+Another feature was the ability to move a child to another parent. I needed to know the node being transferred, the original parent and the new adoptive parent. Simply, the parent property on the child node was updated with the new parent id. After the update, both parents would need to be updated.
 
+------------------------------------------------------
+*Reordering Child Nodes and Preventing Dead Ends*
+------------------------------------------------------
+
+Category Node
+ - [~~up~~|down] Child Node 1
+ - [up|down] Child Node 6
+ - [up|down] Child Node 2
+ - [up|down] Child Node 3
+ - [up|down] Child Node 4
+ - [up|~~down~~] Child Node 5
+
+The ordered placement was preserved for a set of child nodes with the same parent or category. On load, the order persisted. A child node can be ascended or decended with the click of the *up* or *down* arrow icon buttons that are located on the child node row. When the order is changed, the children are updated using the reloadChildren function as described above. I also needed to account for a child on either the very top or bottom of the list. The childOrderDeadendCheck() function would check if a child node is at either extreme and disable either the *up* or *down* arrow icon button in order to prevent moving a child beyond the extreme.
 
