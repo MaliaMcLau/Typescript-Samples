@@ -1,5 +1,5 @@
 # Typescript-Samples
-Here are some samples written in Typescript from my last position. This is Not my best work but it is what could shared. To protect data structures still in use, some names have been redacted. Below I will explain some solutions I authored during this project.
+Here are some samples written in Typescript from my last position. This is not my best work but it is what could be shared publicly. To protect data structures still in use, some names have been redacted. Below I will explain some solutions I authored during this project.
 ------------------------------------------------
 #*Notes on Redacted-Accordion Component Sample*#
 ------------------------------------------------
