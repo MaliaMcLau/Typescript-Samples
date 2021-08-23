@@ -85,13 +85,13 @@ this.activatedRoute.url
       )
 ```
 
-As a part of a dynamic Angular structure, this component needed to adapt to various page views. In the routes, the route for the form view included `/edit` as a suffix. `ActivatedRoute` has access to any item seen in the url string. In the above code snippet, we subscribe to activatedRoute.url and make a boolean assignment.
+As a part of a dynamic Angular structure, this component needed to adapt to various page views. In the routes, the route to the form includes `/edit` as a suffix. `ActivatedRoute` has access to any item seen in the url string. In the above code snippet, we subscribe to activatedRoute.url and make a boolean assignment.
 (Note: `route`, `url` and `endpoint string` can refer to the same information and the name depends on the context). 
 
 ------------------------------------------------------
 *Defining essential page variables.*
 ------------------------------------------------------
-These variables are essential for handling form requests, route navigation and for labeling in views so they are assigned higher in the component hierarchy.
+These variables are essential for handling form requests, route navigation and for labeling in views so they are assigned higher in the component hierarchy. Again, `ActivatedRoute` is used to capture strings from the url.
 ```
 this.activatedRoute.data
       .subscribe(
