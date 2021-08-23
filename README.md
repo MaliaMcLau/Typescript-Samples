@@ -99,7 +99,7 @@ this.activatedRoute.data
       );
 
 ```
-This component can repesent a single data row or a list multiple rows. In every case, an page type is defined, which is called `actionType`. 
+This component can repesent a single data row or a list multiple rows. In every case, a page type is defined, which is called `actionType`. An `actionType` represents a particular database table.
 
 ```
 this.activatedRoute.paramMap
@@ -115,11 +115,10 @@ this.activatedRoute.paramMap
         }
       );
 ```
-In this code base, 
-an `actionType` represents a particular database table.
-a `actionID` represents a row ID, and
-a `bindingType` represents the foregin table of a data row that shares a relation-table row with the `actionID` row item on the `actionType` table.
-In the case of a form, an update form has a valid `actionID` and valid `bindingType` whereas a creation form has neither defined.
+
+An `actionID` is optional and can represent a row ID for the data represented by the page. The `actionID` must be on the `actionType` table.
+A `bindingType` is optional and can represent a foregin table of a data row that shares a relation-table row with the `action` row item.
+In the case of a form, an update-form has both a valid `actionID` and valid `bindingType`, whereas a creation form has neither defined.
 
 ------------------------------------------------------
 *Loading relationship pages.*
