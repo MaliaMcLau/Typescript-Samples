@@ -57,3 +57,72 @@ Another feature was the ability to move a child to another parent. I needed to k
 
 The ordered placement was preserved for a set of child nodes with the same parent or category. On load, the order persisted. A child node can be ascended or decended with the click of the *up* or *down* arrow icon buttons that are located on the child node row. When the order is changed, the children are updated using the reloadChildren function as described above. I also needed to account for a child on either the very top or bottom of the list. The childOrderDeadendCheck() function would check if a child node is at either extreme and disable either the *up* or *down* arrow icon button in order to prevent moving a child beyond the extreme.
 
+------------------------------------------------
+#*Notes on Admin-tabs Component Sample*#
+------------------------------------------------
+
+![image](https://user-images.githubusercontent.com/8867874/130508194-80139efe-9ab4-407c-b591-72936acd27fb.png)
+example of basic tabs from Angular Material
+
+This is a generic component that is used for several administrative pages. The tabs are meant to be used on several pages in a variety of situations: data forms, list data and data relationships. Tabs are defined with the `Tab` interface, which includes a `label` for the view, a routing `link` that matches route strings in the `-routing.ts` file and a `status`, a unique reference to a tab.
+
+There are two static tab profiles.
+`tabs: Tab[]` handles tab several admin pages.
+`redactedTabs: Tab[]` is a sub-set of tabs to handle one perticular admin case with features unique to that admin.
+In hindsight, there might have been a better, more dynamic solution to replace these static tab profiles. Such a solution was offered, however, it involved omitting an interface which in my opinion is extremely bad practice in Typescript.
+
+------------------------------------------------------
+*Identifying the page as a form.*
+------------------------------------------------------
+```
+this.activatedRoute.url
+      .subscribe(
+        data => {
+          if ( data[0] ) {
+            this.isForm = data[0]['path'] === 'edit'
+          }
+        }
+      )
+```
+
+As a part of a dynamic Angular structure, this component needed to adapt to various page views. In the routes, the route for the form view included `/edit` as a suffix. `ActivatedRoute` has access to any item seen in the url string. In the above code snippet, we subscribe to activatedRoute.url and make a boolean assignment.
+(Note: `route`, `url` and `endpoint string` can refer to the same information and the name depends on the context). 
+
+------------------------------------------------------
+*Defining essential page variables.*
+------------------------------------------------------
+These variables are essential for handling form requests, route navigation and for labeling in views so they are assigned higher in the component hierarchy.
+```
+this.activatedRoute.data
+      .subscribe(
+        data => this.actionType = data['type']
+      );
+
+```
+This component can repesent a single data row or a list multiple rows. In every case, an page type is defined, which is called `actionType`. 
+
+```
+this.activatedRoute.paramMap
+      .subscribe(
+        params => {
+          this.actionID = params.get('id');
+          this.bindingType = params.get('type');
+
+          if ( this.actionID && this.actionType === 'redacted' && this.bindingType == null ) {
+            this.tabs = this.redactedTabs;
+          }
+
+        }
+      );
+```
+In this code base, 
+an `actionType` represents a particular database table.
+a `actionID` represents a row ID, and
+a `bindingType` represents the foregin table of a data row that shares a relation-table row with the `actionID` row item on the `actionType` table.
+In the case of a form, an update form has a valid `actionID` and valid `bindingType` whereas a creation form has neither defined.
+
+------------------------------------------------------
+*Loading relationship pages.*
+------------------------------------------------------
+Pending
+
