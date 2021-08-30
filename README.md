@@ -55,7 +55,7 @@ Another feature was the ability to move a child to another parent. I needed to k
   - [ up | ~~down~~ ] Child Node 5
 - Category Node 2
 
-The ordered placement was preserved for a set of child nodes with the same parent or category. On load, the order persisted. A child node can be ascended or decended with the click of the *up* or *down* arrow icon buttons that are located on the child node row. When the order is changed, the children are updated using the reloadChildren function as described above. I also needed to account for a child on either the very top or bottom of the list. The childOrderDeadendCheck() function would check if a child node is at either extreme and disable either the *up* or *down* arrow icon button in order to prevent moving a child beyond the extreme.
+The ordered placement was preserved for a set of child nodes with the same parent or category. On load, the order is persisted. A child node can be ascended or decended with the click of the *up* or *down* arrow icon buttons that are located on the child node row. When the order is changed, the children are updated using the reloadChildren() function as described above. I also needed to account for a child on either the very top or bottom of the list. The childOrderDeadendCheck() function would check if a child node is at either extreme and disable either the *up* or *down* arrow icon button in order to prevent moving a child beyond the extreme.
 
 ------------------------------------------------
 #*Notes on Admin-tabs Component Sample*#
