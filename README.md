@@ -26,7 +26,7 @@ a child, which could be created, deleted, edited, or moved to another category. 
   ```
 
 Various templates could be injected into the accordion by passing the TemplateRef type variables into the accordion component instance. This allowed for further customizations 
-for what types of data were displayed. The redacted-accordion view contains three ng-container tag blocks that rely on the TemplateRef inputs. 
+for what types of data were displayed. The redacted-accordion view contains three ng-template tag blocks that display if the appropriate TemplateRef input is passed. 
 
 ------------------------------------------------------
 *Updating the Accordion After Changes to Child Nodes.*
